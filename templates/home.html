@@ -1,0 +1,43 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content%}
+
+
+
+
+{% if user.is_authenticated %}
+    <h1> Customer Management </h1>
+
+    {% if customers %}
+        {% for customer in customers %}
+        {{ customer }} <br>
+        {% endfor %}
+
+    {% endif %}
+{% else %}
+<!-- log in form -->
+<div class="container d-flex justify-content-center">
+    
+    <form  action="{% url 'home' %}" method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <h1> Log In </h1>
+            {{ loginform|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-outline-info"> Submit </button>
+        </div>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                    Haven't register yet ? 
+                <a class="ml-2" href="{% url 'register' %}"> Sign Up </a>
+            </small>
+        </div>
+    </form>
+    
+</div>
+    
+{% endif %}
+{% endblock %}
