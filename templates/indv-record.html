@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content%}
+
+<br> <br> 
+<h1> Individual Record Management</h1>
+<div class="container bg-primary">
+    <p>Full Name: {{ customer_record.full_name }}</p>
+    <p>Email: {{ customer_record.email }}</p>
+    <p>Phone: {{ customer_record.phone }}</p>
+    <p>Adresse: {{ customer_record.adresse }}</p>
+</div>
+    
+
+{% endblock %}

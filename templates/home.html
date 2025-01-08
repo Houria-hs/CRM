@@ -5,16 +5,35 @@
 {% block content%}
 
 
-
-
 {% if user.is_authenticated %}
-    <h1> Customer Management </h1>
-
+<br> <br>
+    <h1 class="text-center"> Customer Management </h1>
+<br> <br> 
     {% if customers %}
-        {% for customer in customers %}
-        {{ customer }} <br>
-        {% endfor %}
-
+    <div class="container">
+        <table class="table table-success table-striped ">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Adresse</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in customers %}
+                <tr>
+                    <th scope="row"> <a href="{% url 'individualrecord' customer.id %}"> {{customer.id}} </a></th>
+                    <td>{{customer.full_name}}</td>
+                    <td>{{customer.email}}</td>
+                    <td>{{customer.phone}}</td>
+                    <td>{{customer.adresse}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
     {% endif %}
 {% else %}
 <!-- log in form -->
@@ -38,6 +57,7 @@
     </form>
     
 </div>
-    
 {% endif %}
+
+
 {% endblock %}

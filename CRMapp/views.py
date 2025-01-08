@@ -3,9 +3,7 @@ from django.contrib.auth import logout , login , authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import UserRegisterForm
 from django.contrib import messages
-from .models import Customer
-
-# Create your views here.
+from .models import Customer 
 
 
 
@@ -41,8 +39,13 @@ def logout_view(request):
     logout(request)
     return redirect('home')
 
-
-
+def individualrecord(request , pk):
+    if request.user.is_authenticated:
+        customer_record = Customer.objects.get(id = pk)
+        return render(request , 'indv-record.html' , {'current_costumer':customer_record})
+    else:
+        messages.warning( request , 'You must be logged in to access this page !')
+        return redirect('home')
 
 
 
