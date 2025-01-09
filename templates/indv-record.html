@@ -1,14 +1,23 @@
 {% extends 'base.html' %}
 {% block content%}
 
-<br> <br> 
-<h1> Individual Record Management</h1>
-<div class="container bg-primary">
-    <p>Full Name: {{ customer_record.full_name }}</p>
-    <p>Email: {{ customer_record.email }}</p>
-    <p>Phone: {{ customer_record.phone }}</p>
-    <p>Adresse: {{ customer_record.adresse }}</p>
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Customer Record</h1>
+    <div class="card mx-auto animate__animated animate__fadeIn" style="max-width: 600px;">
+        <div class="card-header bg-primary text-white text-center">
+            <h3>{{ customer_record.full_name }}</h3>
+        </div>
+        <div class="card-body">
+            <div class="card-body">
+                <p><i class="fas fa-envelope me-2"></i><strong>Email:</strong> {{ customer_record.email }}</p>
+                <p><i class="fas fa-phone me-2"></i><strong>Phone:</strong> {{ customer_record.phone }}</p>
+                <p><i class="fas fa-map-marker-alt me-2"></i><strong>Adresse:</strong> {{ customer_record.adresse }}</p>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            <a href="{% url 'home' %}" class="btn btn-secondary">Back to Customer List</a>
+        </div>
+    </div>
 </div>
-    
 
 {% endblock %}

@@ -39,10 +39,10 @@ def logout_view(request):
     logout(request)
     return redirect('home')
 
-def individualrecord(request , pk):
+def customer_record(request , pk):
     if request.user.is_authenticated:
         customer_record = Customer.objects.get(id = pk)
-        return render(request , 'indv-record.html' , {'current_costumer':customer_record})
+        return render(request , 'indv-record.html' , {'customer_record':customer_record})
     else:
         messages.warning( request , 'You must be logged in to access this page !')
         return redirect('home')

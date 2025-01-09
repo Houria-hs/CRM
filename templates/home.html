@@ -24,7 +24,7 @@
             <tbody>
                 {% for customer in customers %}
                 <tr>
-                    <th scope="row"> <a href="{% url 'individualrecord' customer.id %}"> {{customer.id}} </a></th>
+                    <th scope="row"> <a href="{% url 'customer_record' customer.id %}"> {{customer.id}} </a></th>
                     <td>{{customer.full_name}}</td>
                     <td>{{customer.email}}</td>
                     <td>{{customer.phone}}</td>
