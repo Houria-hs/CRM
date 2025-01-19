@@ -12,10 +12,14 @@
                 <p><i class="fas fa-envelope me-2"></i><strong>Email:</strong> {{ customer_record.email }}</p>
                 <p><i class="fas fa-phone me-2"></i><strong>Phone:</strong> {{ customer_record.phone }}</p>
                 <p><i class="fas fa-map-marker-alt me-2"></i><strong>Adresse:</strong> {{ customer_record.adresse }}</p>
+                <p><i class="fa-solid fa-arrow-down me-2"></i><strong>Created at:</strong> {{ customer_record.created_at }}</p>
+                <p><i class="fa-solid fa-pen-to-square me-2"></i><strong>Updated at:</strong> {{ customer_record.updated_at }}</p>
             </div>
         </div>
         <div class="card-footer text-center">
             <a href="{% url 'home' %}" class="btn btn-secondary">Back to Customer List</a>
+            <a class="btn  btn-secondary" href="{% url 'update_record' customer_record.id %}">Update</a>
+            <a class="btn btn-danger " href="{% url 'Delete_record' customer_record.id %}">Delete </a>
         </div>
     </div>
 </div>
