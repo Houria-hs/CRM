@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content%}
+
+<div class="container py-5">
+    <div class="card shadow-sm p-4">
+        <form action="{% url 'Add_record' %}" method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="text-primary fw-bold mb-3">Add Record</legend>
+                {{ add_record_form|crispy }}
+            </fieldset>
+            <div class="d-flex justify-content-end mt-3">
+                <button type="submit" class="btn btn-primary px-4">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
