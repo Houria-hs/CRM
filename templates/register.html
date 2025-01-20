@@ -5,25 +5,31 @@
 {% load crispy_forms_tags %}
 
 {% block content%}
-<div class="container py-5 d-flex flex-column justify-content-center ">
-    
-<form  action="{% url 'register' %}" method="POST">
-    {% csrf_token %}
-    <fieldset class="form-group">
-        <legend class="border-bottom mb-3"> Register </legend>
-        {{ form|crispy }}
-    </fieldset>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-outline-info"> Sign Up </button>
-    </div>
-</form>
-<div class="border-top pt-3">
-    <small class="text-muted">
-        Already have an account ? 
-        <a class="ml-2" href="{% url 'login' %}"> Sign In </a>
-    </small>
+<div class="container py-5 d-flex justify-content-center">
+    <form action="{% url 'register' %}" method="POST" class="p-4 rounded shadow-lg" style="width: 100%; max-width: 500px; background-color: #f8f9fa;">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="text-center text-primary border-bottom pb-2 mb-4" style="font-size: 1.5rem; font-weight: bold;">
+                Register
+            </legend>
+            {{ form|crispy }}
+        </fieldset>
+        <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary w-100 py-2" style="font-size: 1rem; font-weight: 500;">
+                Sign Up
+            </button>
+        </div>
+        <div class="border-top pt-3 mt-4 text-center">
+            <small class="text-muted">
+                Already have an account? 
+                <a class="ml-2 text-decoration-none text-primary" href="{% url 'home' %}">
+                    Sign In
+                </a>
+            </small>
+        </div>
+    </form>
 </div>
-</div>
+
 
 
 {% endblock %}

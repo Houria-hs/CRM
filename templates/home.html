@@ -2,12 +2,75 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block content%}
-
+{% block content %}
 
 {% if user.is_authenticated %}
+<div class="container py-5">
+    <h1 class="text-center text-primary mb-4" style="font-weight: bold;">Customer Management Dashboard</h1>
+    {% if customers %}
+    <div class="table-responsive">
+        <table class="table table-striped table-hover shadow-sm">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in customers %}
+                <tr>
+                    <th scope="row">
+                        <a href="{% url 'customer_record' customer.id %}" class="text-decoration-none text-primary">
+                            {{ customer.id }}
+                        </a>
+                    </th>
+                    <td>{{ customer.full_name }}</td>
+                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.phone }}</td>
+                    <td>{{ customer.adresse }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="alert alert-warning text-center" role="alert">
+        No customers found. Please add some records.
+    </div>
+    {% endif %}
+</div>
+{% else %}
+<div class="container d-flex flex-column align-items-center justify-content-center py-5" style="min-height: 80vh;">
+    <form action="{% url 'home' %}" method="POST" class="p-4 rounded shadow-lg" style="width: 100%; max-width: 400px; background-color: #f8f9fa;">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <h1 class="text-center text-primary mb-3">Log In</h1>
+            {{ loginform|crispy }}
+        </fieldset>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary w-100 py-2" style="font-size: 1rem; font-weight: 500;">Submit</button>
+        </div>
+        <div class="border-top mt-3 pt-3 text-center">
+            <small class="text-muted">
+                Haven't registered yet? 
+                <a href="{% url 'register' %}" class="text-primary font-weight-bold" style="text-decoration: none;">Sign Up</a>
+            </small>
+        </div>
+    </form>
+</div>
+{% endif %}
+
+{% endblock %}
+
+
+
+
+<!-- {% if user.is_authenticated %}
 <br> <br>
-    <h1 class="text-center"> Customer Management </h1>
+    <h1 class="text-center"> Customer Management Dashboard </h1>
 <br> <br> 
     {% if customers %}
     <div class="container">
@@ -35,9 +98,9 @@
         </table>
     </div>
     {% endif %}
-{% else %}
+{% else %} -->
 <!-- log in form -->
-<div class="container d-flex justify-content-center">
+<!-- <div class="container d-flex justify-content-center">
     
     <form  action="{% url 'home' %}" method="POST">
         {% csrf_token %}
@@ -56,8 +119,7 @@
         </div>
     </form>
     
-</div>
-{% endif %}
+</div> -->
+<!-- {% endif %}
 
 
-{% endblock %}
