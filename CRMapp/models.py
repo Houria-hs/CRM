@@ -10,7 +10,7 @@ class Customer(models.Model):
     adresse = models.TextField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    
     def __str__(self):
         return self.full_name
     
@@ -25,5 +25,3 @@ class leads(models.Model):
     
     def __str__(self):
         return self.customer
-
-# tasks model
