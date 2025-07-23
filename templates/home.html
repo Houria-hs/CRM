@@ -1,4 +1,5 @@
 
+
 {% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
@@ -61,67 +62,10 @@
         </div>
     </form>
 </div>
+
+
+
+
 {% endif %}
-
-
-
 {% endblock %}
-
-
-
-
-<!-- {% if user.is_authenticated %}
-<br> <br>
-    <h1 class="text-center"> Customer Management Dashboard </h1>
-<br> <br> 
-    {% if customers %}
-    <div class="container">
-        <table class="table table-success table-striped ">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Full Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Adresse</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for customer in customers %}
-                <tr>
-                    <th scope="row"> <a href="{% url 'customer_record' customer.id %}"> {{customer.id}} </a></th>
-                    <td>{{customer.full_name}}</td>
-                    <td>{{customer.email}}</td>
-                    <td>{{customer.phone}}</td>
-                    <td>{{customer.adresse}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    {% endif %}
-{% else %} -->
-<!-- log in form -->
-<!-- <div class="container d-flex justify-content-center">
-    
-    <form  action="{% url 'home' %}" method="POST">
-        {% csrf_token %}
-        <fieldset class="form-group">
-            <h1> Log In </h1>
-            {{ loginform|crispy }}
-        </fieldset>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-outline-info"> Submit </button>
-        </div>
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                    Haven't register yet ? 
-                <a class="ml-2" href="{% url 'register' %}"> Sign Up </a>
-            </small>
-        </div>
-    </form>
-    
-</div> -->
-<!-- {% endif %}
-
 
