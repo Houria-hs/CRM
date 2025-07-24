@@ -25,12 +25,16 @@ def home(request):
 # authentication system ( registration , logout)
 def register(request):
     if request.method == 'POST':
+        print("🔥 POST received!")
         form = UserRegisterForm(request.POST)
         if form.is_valid():
+            print("✅ Form is valid!")
             login(request ,  form.save() )
             username = form.cleaned_data.get('username')
             messages.success(request , f'Account created for {username}!')
             return redirect('home')
+        else:
+            print("❌ Form errors:", form.errors)
     else:
         form = UserRegisterForm()
     return render(request, 'register.html' , { 'form':form })
